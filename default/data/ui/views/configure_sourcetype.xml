@@ -33,8 +33,8 @@
       <table id="lookupTable">
         <search id="lookupSearch">
           <query>| inputlookup sourcetype_monitor
-            | eval Remove="Remove" | eval key=_key | eval Edit="Edit"
-            | table * Edit, Remove
+            | eval Remove="Remove" | eval key=_key | eval Edit="Edit" | eval Clone="Clone"
+            | table * Edit, Clone, Remove
           </query>
           <earliest>$earliest$</earliest>
           <latest>$latest$</latest>
@@ -48,7 +48,7 @@
           </progress>
         </search>
         <option name="count">100</option>
-        <option name="fields">comments,contact,host,index,sourcetype,lateSecs,Edit,Remove</option>
+        <option name="fields">comments,contact,host,index,sourcetype,lateSecs,Edit,Clone,Remove</option>
       </table>
     </panel>
   </row>

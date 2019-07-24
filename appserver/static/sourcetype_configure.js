@@ -77,6 +77,15 @@ require([
 			modal.show();
 		}
 
+		if(target === 'Clone') {
+
+			var modal = new ModalView({ model : model,
+				eventBus : eventBus,
+				mode : 'New',
+				tokens : tokens });
+			modal.show();
+		}
+
 		if(target === 'Remove') {
 			console.log('REMOVE');
 			tokens.set('key_remove_tok', model.get("_key"));
