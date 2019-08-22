@@ -5,11 +5,10 @@
       | append [| stats count
       | eval index=lower("$index_add_tok$")
       | eval sourcetype=lower("$sourcetype_add_tok$")
-      | eval host=lower("$host_add_tok$")
       | eval lateSecs="$late_secs_add_tok$"
       | eval contact="$contact_add_tok$"
       | eval comments="$comments_add_tok$"]
-      | table index,sourcetype,host,lateSecs,contact,comments | outputlookup sourcetype_monitor</query>
+      | table index,sourcetype,lateSecs,contact,comments | outputlookup sourcetype_monitor</query>
   </search>
   <search id="removeRow">
     <query>| inputlookup  sourcetype_monitor | eval key=_key
@@ -22,7 +21,6 @@
       | WHERE key="$key_update_tok$"
       | eval index=lower("$index_update_tok$")
       | eval sourcetype=lower("$sourcetype_update_tok$")
-      | eval host=lower("$host_update_tok$")
       | eval lateSecs="$late_secs_update_tok$"
       | eval contact="$contact_update_tok$"
       | eval comments="$comments_update_tok$"
@@ -48,7 +46,7 @@
           </progress>
         </search>
         <option name="count">100</option>
-        <option name="fields">comments,contact,host,index,sourcetype,lateSecs,Edit,Clone,Remove</option>
+        <option name="fields">comments,contact,index,sourcetype,lateSecs,Edit,Clone,Remove</option>
       </table>
     </panel>
   </row>

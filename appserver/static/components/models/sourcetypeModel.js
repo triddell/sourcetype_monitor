@@ -10,7 +10,6 @@ define([
             _key: "",
             comments: "",
             contact: "",
-            host: "",
             index: "",
             lateSecs: "",
             sourcetype: "",

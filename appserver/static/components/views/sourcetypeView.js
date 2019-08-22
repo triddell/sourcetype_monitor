@@ -61,14 +61,12 @@ define([
 
             unsetSplunkComponents: function() {
 
-                this.tokens.unset("host_add_tok");
                 this.tokens.unset("index_add_tok");
                 this.tokens.unset("comments_add_tok");
                 this.tokens.unset("late_secs_add_tok");
                 this.tokens.unset("contact_add_tok");
                 this.tokens.unset("sourcetype_add_tok");
 
-                this.tokens.unset("host_update_tok");
                 this.tokens.unset("index_update_tok");
                 this.tokens.unset("comments_update_tok");
                 this.tokens.unset("late_secs_update_tok");
@@ -132,16 +130,16 @@ define([
                 $("#sourcetypeForm", this.el).validate({
 
                     rules: {
-                        host: 'required',
                         sourcetype: 'required',
                         index: 'required',
                         lateSecs: {
                             required: true,
-                            //number: true
-                            is_relative_time: true
+                            number: true,
+                            //is_relative_time: true
                         },
                         contact: {
-                            are_valid_emails: true
+                            are_valid_emails: true,
+                            required: true
                         },
                         comments: {
                             required: true,
@@ -149,9 +147,6 @@ define([
                     },
 
                     messages: {
-                        host: {
-                            required: "The Host field is required."
-                        },
                         sourcetype: {
                             required: "The Sourcetype field is required."
                         },
@@ -160,10 +155,13 @@ define([
                         },
                         lateSecs: {
                             required: "The Late Seconds field is required.",
-                            //number: "Not a valid number."
+                            number: "Late Seconds must be a valid number."
+                        },
+                        contact: {
+                            required: "The Contacts field is required."
                         },
                         comments: {
-                            required: "You must provide a comment."
+                            required: "The Comments field is required."
                         }
                     },
 
@@ -181,7 +179,6 @@ define([
 
 				if(this.mode === "New") {
 
-					this.tokens.set("host_add_tok", this.model.get("host"));
 					this.tokens.set("index_add_tok", this.model.get("index"));
 					this.tokens.set("comments_add_tok", this.model.get("comments"));
 					this.tokens.set("late_secs_add_tok", this.model.get("lateSecs"));
@@ -193,7 +190,6 @@ define([
 				} else if(this.mode === "Edit") {
 
 					this.tokens.set("key_update_tok", this.model.get("_key"));
-					this.tokens.set("host_update_tok", this.model.get("host"));
 					this.tokens.set("index_update_tok", this.model.get("index"));
 					this.tokens.set("comments_update_tok", this.model.get("comments"));
 					this.tokens.set("late_secs_update_tok", this.model.get("lateSecs"));

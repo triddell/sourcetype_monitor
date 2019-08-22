@@ -36,7 +36,6 @@ require([
 			_key: "",
             comments: "",
             contact: "",
-            host: "",
             index: "",
             lateSecs: "",
             sourcetype: "",
@@ -61,7 +60,6 @@ require([
 			_key: event['row.key'],
 			comments: event['row.comments'],
 			contact: event['row.contact'],
-			host: event['row.host'],
 			index: event['row.index'],
 			lateSecs: event['row.lateSecs'],
 			sourcetype: event['row.sourcetype'],
@@ -91,7 +89,6 @@ require([
 			tokens.set('key_remove_tok', model.get("_key"));
 			tokens.set('comments_remove_tok', model.get("comments"));
 			tokens.set('contact_remove_tok', model.get("contact"));
-			tokens.set('host_remove_tok', model.get("host"));
 			tokens.set('index_remove_tok', model.get("index"));
 			tokens.set('sourcetype_remove_tok', model.get("sourcetype"));
 			tokens.set('lateSecs_remove_tok', model.get("lateSecs"));
