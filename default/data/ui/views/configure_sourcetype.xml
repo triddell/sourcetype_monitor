@@ -30,7 +30,7 @@
     <panel id="lookupPanel">
       <table id="lookupTable">
         <search id="lookupSearch">
-          <query>| inputlookup sourcetype_monitor
+          <query>| inputlookup sourcetype_monitor | sort comments
             | eval Remove="Remove" | eval key=_key | eval Edit="Edit" | eval Clone="Clone"
             | table * Edit, Clone, Remove
           </query>
